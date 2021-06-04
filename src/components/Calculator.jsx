@@ -4,23 +4,22 @@ export function Calculator() {
   //usestates
   const [thisDigit, setThisDigit] = useState('')
   const [numberDisplayed, setNumberDisplayed] = useState('0')
+  const [firstNumber, setFirstNumber] = useState('0')
 
   //functions
   //add digits to current number
-  useEffect(function () {
-    allClear
-  }, [])
+
   useEffect(
     function () {
       console.log(thisDigit)
       const newNumber = numberDisplayed.concat(thisDigit)
+      setThisDigit('')
       if (newNumber.length > 1 && newNumber.startsWith('0')) {
         setNumberDisplayed(newNumber.slice(1, newNumber.length))
-        setThisDigit('')
         return
       }
       setNumberDisplayed(newNumber)
-      setThisDigit('')
+      // console.log(numberDisplayed)
       return
     },
     [thisDigit]
@@ -28,6 +27,11 @@ export function Calculator() {
 
   function allClear() {
     setNumberDisplayed('0')
+  }
+  function addNumber() {
+    setFirstNumber(numberDisplayed + ' plus')
+    console.log(firstNumber)
+    allClear()
   }
   return (
     <main>
@@ -69,7 +73,9 @@ export function Calculator() {
           <button className="button" onClick={(event) => setThisDigit(3)}>
             3
           </button>
-          <button className="button op">+</button>
+          <button className="button op" onClick={addNumber}>
+            +
+          </button>
           <button className="button x2" onClick={(event) => setThisDigit(0)}>
             0
           </button>
