@@ -26,12 +26,6 @@ export function Calculator() {
     [thisDigit]
   )
 
-  // function digitClicked() {
-  //   setThisDigit(event.target.value)
-  //   console.log(thisDigit)
-  //   return
-  // }
-
   function allClear() {
     setNumberDisplayed('0')
   }
@@ -56,15 +50,29 @@ export function Calculator() {
             9
           </button>
           <button className="button op">&times;</button>
-          <button className="button">4</button>
-          <button className="button">5</button>
-          <button className="button">6</button>
+          <button className="button" onClick={(event) => setThisDigit(4)}>
+            4
+          </button>
+          <button className="button" onClick={(event) => setThisDigit(5)}>
+            5
+          </button>
+          <button className="button" onClick={(event) => setThisDigit(6)}>
+            6
+          </button>
           <button className="button op">&minus;</button>
-          <button className="button">1</button>
-          <button className="button">2</button>
-          <button className="button">3</button>
+          <button className="button" onClick={(event) => setThisDigit(1)}>
+            1
+          </button>
+          <button className="button" onClick={(event) => setThisDigit(2)}>
+            2
+          </button>
+          <button className="button" onClick={(event) => setThisDigit(3)}>
+            3
+          </button>
           <button className="button op">+</button>
-          <button className="button x2">0</button>
+          <button className="button x2" onClick={(event) => setThisDigit(0)}>
+            0
+          </button>
           <button className="button">.</button>
           <button className="button op">=</button>
         </div>
