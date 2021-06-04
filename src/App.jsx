@@ -1,5 +1,12 @@
 import React from 'react'
+import { Calculator } from './components/Calculator'
 
 export function App() {
-  return <div>Hello, World!</div>
+  //usestates here
+
+  return (
+    <div>
+      <Calculator />
+    </div>
+  )
 }
