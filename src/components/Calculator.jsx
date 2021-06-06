@@ -44,6 +44,10 @@ export function Calculator() {
     setFirstNumber('time' + numberDisplayed)
     allClear()
   }
+  function subtract() {
+    setFirstNumber('subt' + numberDisplayed)
+    allClear()
+  }
 
   function solve() {
     const num2 = numberDisplayed
@@ -52,12 +56,14 @@ export function Calculator() {
     const operator = firstNumber.slice(0, 4)
     console.log(operator)
     if (operator === 'plus') {
-      const answer = parseInt(num1) + parseInt(num2)
+      const answer = (parseInt(num1) + parseInt(num2)).toString()
       setNumberDisplayed(answer)
     } else if (operator === 'divi') {
-      setNumberDisplayed(parseInt(num1) / parseInt(num2))
+      setNumberDisplayed((parseInt(num1) / parseInt(num2)).toString())
     } else if (operator === 'time') {
-      setNumberDisplayed(parseInt(num1) * parseInt(num2))
+      setNumberDisplayed((parseInt(num1) * parseInt(num2)).toString())
+    } else if (operator === 'subt') {
+      setNumberDisplayed((parseInt(num1) - parseInt(num2)).toString())
     }
   }
   return (
@@ -94,7 +100,9 @@ export function Calculator() {
           <button className="button" onClick={(event) => setThisDigit('6')}>
             6
           </button>
-          <button className="button op">&minus;</button>
+          <button className="button op" onClick={subtract}>
+            &minus;
+          </button>
           <button className="button" onClick={(event) => setThisDigit('1')}>
             1
           </button>
