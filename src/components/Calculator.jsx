@@ -19,7 +19,7 @@ export function Calculator() {
         return
       }
       setNumberDisplayed(newNumber)
-      // console.log(numberDisplayed)
+      console.log(numberDisplayed)
       return
     },
     [thisDigit]
@@ -29,9 +29,36 @@ export function Calculator() {
     setNumberDisplayed('0')
   }
   function addNumber() {
-    setFirstNumber(numberDisplayed + ' plus')
+    setFirstNumber('plus' + numberDisplayed)
     console.log(firstNumber)
     allClear()
+  }
+
+  function divideNumber() {
+    setFirstNumber('divi' + numberDisplayed)
+    console.log(firstNumber)
+    allClear()
+  }
+
+  function multiply() {
+    setFirstNumber('time' + numberDisplayed)
+    allClear()
+  }
+
+  function solve() {
+    const num2 = numberDisplayed
+    const num1 = firstNumber.slice(4, firstNumber.length)
+    console.log(num1)
+    const operator = firstNumber.slice(0, 4)
+    console.log(operator)
+    if (operator === 'plus') {
+      const answer = parseInt(num1) + parseInt(num2)
+      setNumberDisplayed(answer)
+    } else if (operator === 'divi') {
+      setNumberDisplayed(parseInt(num1) / parseInt(num2))
+    } else if (operator === 'time') {
+      setNumberDisplayed(parseInt(num1) * parseInt(num2))
+    }
   }
   return (
     <main>
@@ -43,44 +70,50 @@ export function Calculator() {
           </button>
           <button className="button fn">&plusmn;</button>
           <button className="button fn">%</button>
-          <button className="button op">&divide;</button>
-          <button className="button" onClick={() => setThisDigit(7)}>
+          <button className="button op" onClick={divideNumber}>
+            &divide;
+          </button>
+          <button className="button" onClick={() => setThisDigit('7')}>
             7
           </button>
-          <button className="button" onClick={(event) => setThisDigit(8)}>
+          <button className="button" onClick={(event) => setThisDigit('8')}>
             8
           </button>
-          <button className="button" onClick={(event) => setThisDigit(9)}>
+          <button className="button" onClick={(event) => setThisDigit('9')}>
             9
           </button>
-          <button className="button op">&times;</button>
-          <button className="button" onClick={(event) => setThisDigit(4)}>
+          <button className="button op" onClick={multiply}>
+            &times;
+          </button>
+          <button className="button" onClick={(event) => setThisDigit('4')}>
             4
           </button>
-          <button className="button" onClick={(event) => setThisDigit(5)}>
+          <button className="button" onClick={(event) => setThisDigit('5')}>
             5
           </button>
-          <button className="button" onClick={(event) => setThisDigit(6)}>
+          <button className="button" onClick={(event) => setThisDigit('6')}>
             6
           </button>
           <button className="button op">&minus;</button>
-          <button className="button" onClick={(event) => setThisDigit(1)}>
+          <button className="button" onClick={(event) => setThisDigit('1')}>
             1
           </button>
-          <button className="button" onClick={(event) => setThisDigit(2)}>
+          <button className="button" onClick={(event) => setThisDigit('2')}>
             2
           </button>
-          <button className="button" onClick={(event) => setThisDigit(3)}>
+          <button className="button" onClick={(event) => setThisDigit('3')}>
             3
           </button>
           <button className="button op" onClick={addNumber}>
             +
           </button>
-          <button className="button x2" onClick={(event) => setThisDigit(0)}>
+          <button className="button x2" onClick={(event) => setThisDigit('0')}>
             0
           </button>
           <button className="button">.</button>
-          <button className="button op">=</button>
+          <button className="button op" onClick={solve}>
+            =
+          </button>
         </div>
       </div>
     </main>
